@@ -49,16 +49,16 @@ curl -X POST \
 -d '{"Email":"bill@aol.com","Username":"h0b0","Password":"pass"}' \
 localhost:1323/users
 
+// READ
+curl \
+  -X GET \
+  http://localhost:1323/users/h0b0
+
 // UPDATE
 curl -X PUT \
 -H 'Content-Type: application/json' \
 -d '{"Email": "ballin@netscap.net","Username":"h0b0","Password":"NEWSECUREPASSWORD"}' \
 localhost:1323/users/h0b0
-
-// RETREIVE
-curl \
-  -X GET \
-  http://localhost:1323/users/h0b0
 
 // DELETE
 curl -X DELETE \
