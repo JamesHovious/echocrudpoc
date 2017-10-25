@@ -8,16 +8,16 @@ is a *proof of concept* web application that uses an organized group of structs 
 * Allow the data to persist & restore should the web application crash or close
 
 Below is a set of data that one might track in a web application. 
+
 Notice that the `Schema` struct is just a slice of pointers to the data that we want to manage. 
 Each struct (`User`, `Project`) is analogous to a database table. 
 Each struct field is analogous to a table column. 
 Each slice of data that is part of `Schema` would resemble a row of data in a database. 
 Notice that `User` contains a field  that is a slice of pointers to `Project`. 
-This let's us get functionality similar to foreign keys in a relational database. 
+This let's us define relatioships similar to a relational database. 
 If you want to update `Project` you create a new struct a change its pointer. `Users`'s reference will automatically update. 
 
-The whole data structure is serialized as a [gob](https://blog.golang.org/gobs-of-data). The benefit of this is that when encoding occurs the data
-that the pointers point to are encoded by default. This lets the whole data structure be easily restored. 
+If you close the application the whole data structure is encoded as a [gob](https://blog.golang.org/gobs-of-data) and saved to disk. The benefit of this is that when encoding occurs all pointers are flattened, so the underlying data is saved. When the structure is loaded up again as the applicaiton restarts the pointer relationships are restored.
 
 ```
 type Schema struct {
@@ -33,12 +33,10 @@ type User struct {
                       // to define a relationship with another struct/"table"
 }
 
-
 type Project struct {
 	ProjectCode string
 	ProjectName string
 }
-
 ```
 
 
