@@ -3,8 +3,8 @@
 is a *proof of concept* web application that uses an organized group of structs instead of a database.
 
 ## Goal
-* Get CRUD like behavior
-* Allow for relational data to be stored similar to foreign keys in a database
+* Allow for CRUD like behavior/queries
+* Allow for relational data to be stored/queried similar to a relational database
 * Allow the data to persist & restore should the web application crash or close
 
 Below is a set of data that one might track in a web application. 
