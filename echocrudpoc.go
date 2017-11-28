@@ -20,7 +20,7 @@ func main() {
 	// Setup
 	e := echo.New()
 	e.Logger.SetLevel(log.INFO)
-	//var kindlDB database.GobDB
+
 	// Load the database if it exists
 	if _, err := os.Stat(db); !os.IsNotExist(err) {
 		if err != nil {
